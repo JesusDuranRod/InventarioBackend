@@ -29,18 +29,6 @@ namespace Inventario.Api.Controllers
             _signInManager = signInManager;
             _mapper = mapper;
             _userService = userService;
-
-            if (!_userManager.Users.Any())
-            {
-
-                var result = _userManager.CreateAsync(new User
-                {
-                    Email = "jesusduranr202@gmail.com",
-                    EmailConfirmed = true,
-                    UserName = "jesusduranr202@gmail.com"
-                }, "Password.1").Result;
-
-            }
         }
 
         [HttpPost]
