@@ -51,11 +51,11 @@ namespace Inventario.Api.Controllers
         public IActionResult PageNotFound()
         {
 
-            return StatusCode(StatusCodes.Status404NotFound, new
+            return Ok(new
             {
                 hasError = true,
                 message = "Not Found",
-                model = new { },
+                model = new { title= "Page not found", message= "This page does not exists!" },
                 requestId = System.Diagnostics.Activity.Current?.Id
             }); ;
         }

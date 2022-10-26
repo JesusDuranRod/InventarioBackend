@@ -21,9 +21,6 @@ namespace Inventario.Entities.Dtos.Users
         [StringLength(32)]
         public string PhoneNumber { get; set; }
 
-
-        public string Password { get; set; }
-
         [Required]
         public bool Status { get; set; }
     }

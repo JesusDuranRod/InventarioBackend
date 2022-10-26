@@ -77,11 +77,11 @@ namespace Inventario.Services.Users
 
 
             UserStore<User> store = new UserStore<User>(_context);
-            if (!userDto.Password.Equals(""))
+           /* if (!userDto.Password.Equals("") || !userDto.Equals(null))
             {
                 string hashedNewPassword = _userManager.PasswordHasher.HashPassword(user, userDto.Password);
                 await store.SetPasswordHashAsync(user, hashedNewPassword);
-            }
+            }*/
             await store.UpdateAsync(user);
         }
 

@@ -61,7 +61,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = false,
                     message = "Product Registered",
-                    model = new { },
+                    model = await _productService.GetProductsAsync(),
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -71,7 +71,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "Bad Request",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -89,7 +89,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = false,
                     message = "Product Updated",
-                    model = new { },
+                    model = await _productService.GetProductsAsync(),
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -99,7 +99,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "Bad Request",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -117,7 +117,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = false,
                     message = "Product Deleted",
-                    model = new { },
+                    model = await _productService.GetProductsAsync(),
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -127,7 +127,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "Bad Request",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }

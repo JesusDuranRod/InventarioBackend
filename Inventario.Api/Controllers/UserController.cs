@@ -67,7 +67,7 @@ namespace Inventario.Api.Controllers
                     {
                         hasError = false,
                         message = "User Registered",
-                        model = new Object { },
+                        model = (List<UserDto>)await _userService.GetUsersAsync(),
                         requestId = System.Diagnostics.Activity.Current?.Id
                     });
                 }
@@ -82,7 +82,7 @@ namespace Inventario.Api.Controllers
                     {
                         hasError = true,
                         message = "Bad Request",
-                        model = new { },
+                        model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                         requestId = System.Diagnostics.Activity.Current?.Id
                     });
                 }
@@ -93,7 +93,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "Bad Request",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -111,7 +111,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = false,
                     message = "User Updated",
-                    model = new { },
+                    model = (List<UserDto>)await _userService.GetUsersAsync(),
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -121,7 +121,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "Bad Request",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -139,7 +139,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = false,
                     message = "User Deleted",
-                    model = new { },
+                    model = (List<UserDto>)await _userService.GetUsersAsync(),
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -149,7 +149,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "Bad Request",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }

@@ -29,6 +29,18 @@ namespace Inventario.Api.Controllers
             _signInManager = signInManager;
             _mapper = mapper;
             _userService = userService;
+
+            if (!_userManager.Users.Any())
+            {
+
+                var result = _userManager.CreateAsync(new User
+                {
+                    Email = "jesusduranr202@gmail.com",
+                    EmailConfirmed = true,
+                    UserName = "jesusduranr202@gmail.com"
+                }, "Password.1").Result;
+
+            }
         }
 
         [HttpPost]
@@ -58,22 +70,22 @@ namespace Inventario.Api.Controllers
 
                 if (result.IsLockedOut)
                 {
-                    return StatusCode(StatusCodes.Status423Locked,new
+                    return Ok(new
                     {
                         hasError = true,
-                        message = "Locked",
-                        model = new { },
+                        message = "User is locked",
+                        model = new { title= "Locked", message= "This user is locked, too many attemps" },
                         requestId = System.Diagnostics.Activity.Current?.Id
                     });
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return StatusCode(StatusCodes.Status401Unauthorized,new
+                    return Ok(new
                     {
                         hasError = true,
-                        message = "Unauthorized",
-                        model = new { },
+                        message = "User unauthorized",
+                        model = new { title = "Unauthorized", message = "Your user or/and password are wrong" },
                         requestId = System.Diagnostics.Activity.Current?.Id
                     });
                 }
@@ -85,7 +97,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "Bad request",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -105,7 +117,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = false,
                     message = "Signed Out",
-                    model = new { },
+                    model = new { title = "Signed Out", message = "This user is signed out correctly" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
@@ -115,7 +127,7 @@ namespace Inventario.Api.Controllers
                 {
                     hasError = true,
                     message = "One field is required",
-                    model = new { },
+                    model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
                     requestId = System.Diagnostics.Activity.Current?.Id
                 });
             }
