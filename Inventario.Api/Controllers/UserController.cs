@@ -82,7 +82,7 @@ namespace Inventario.Api.Controllers
                     {
                         hasError = true,
                         message = "Bad Request",
-                        model = new { title = "Bad Request", message = "Your request is incorrect, verify it" },
+                        model = result.Errors,
                         requestId = System.Diagnostics.Activity.Current?.Id
                     });
                 }
