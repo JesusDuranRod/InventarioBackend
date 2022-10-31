@@ -78,7 +78,7 @@ namespace Inventario.Api.Controllers
                         ModelState.AddModelError(error.Code, error.Description);
 
                     }
-                    return BadRequest(new
+                    return Ok(new
                     {
                         hasError = true,
                         message = "Bad Request",
